@@ -34,7 +34,7 @@ func RegisterTracks() {
 			http.NotFound(w, r)
 			return
 		}
-		if err := Page(*selected).Render(r.Context(), w); err != nil {
+		if err := page(*selected).Render(r.Context(), w); err != nil {
 			println(err)
 		}
 	})

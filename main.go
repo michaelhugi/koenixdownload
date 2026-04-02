@@ -1,6 +1,7 @@
 package main
 
 import (
+	"koenixdownload/downloads"
 	"koenixdownload/mediaplayer"
 	"net/http"
 )
@@ -10,6 +11,7 @@ import (
 
 func main() {
 	mediaplayer.RegisterTracks()
+	downloads.RegisterDownloads()
 	println("Server starting on http://localhost:8080")
 	if err := http.ListenAndServe(":8080", nil); err != nil {
 		panic(err)
