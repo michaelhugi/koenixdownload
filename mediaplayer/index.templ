@@ -1,22 +1,20 @@
 package mediaplayer
 
-import(
- "fmt"
-)
+import "fmt"
 
 templ Page(current track) {
-    {{
-            // Build the style string safely here
-            bgStyle := fmt.Sprintf("background-image: url('/background/%s');", current.backgroundFile)
-            // Put it in an attributes map
-            bodyAttrs := templ.Attributes{"style": bgStyle}
-        }}
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>{ current.name }</title>
-        <style>
+	{{
+		// Build the style string safely here
+		bgStyle := fmt.Sprintf("background-image: url('/background/%s');", current.backgroundFile)
+		// Put it in an attributes map
+		bodyAttrs := templ.Attributes{"style": bgStyle}
+	}}
+	<!DOCTYPE html>
+	<html lang="en">
+		<head>
+			<meta charset="UTF-8"/>
+			<title>{ current.name }</title>
+			<style>
             body {
                 /* General layout styles */
                 margin: 0;
@@ -47,16 +45,23 @@ templ Page(current track) {
                 margin-top: 20px;
                 filter: invert(1); /* Makes default audio player white */
             }
+            audio::-webkit-media-controls-enclosure {
+                overflow:hidden;
+            }
+
+            audio::-webkit-media-controls-panel {
+                width: calc(100% + 30px); /* Adjust as needed */
+            }
         </style>
-    </head>
-   <body { bodyAttrs... }>
-        <div class="card">
-            <h1>{ current.name }</h1>
-            <audio controls autoplay>
-                <source src={ "/audio/" + current.fileName } type="audio/wav" />
-                Your browser does not support the audio element.
-            </audio>
-        </div>
-    </body>
-    </html>
+		</head>
+		<body { bodyAttrs... }>
+			<div class="card">
+				<h1>{ current.name }</h1>
+				<audio controls autoplay controlsList="nodownload" oncontextmenu="return false;">
+					<source src={ "/audio/" + current.fileName } type="audio/wav"/>
+					Your browser does not support the audio element.
+				</audio>
+			</div>
+		</body>
+	</html>
 }
