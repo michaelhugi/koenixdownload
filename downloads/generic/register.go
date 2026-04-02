@@ -25,6 +25,10 @@ func RegisterDownload(album *Album, codes []string) {
 	slug := fmt.Sprintf("%s/", album.Slug)
 	http.HandleFunc(slug, func(w http.ResponseWriter, r *http.Request) {
 		code := strings.TrimPrefix(r.URL.Path, slug)
+		if code == "bg.jpg" {
+			album.ServeBackground(w, r)
+			return
+		}
 		if strings.HasPrefix(code, "mp3/") {
 			code = strings.TrimPrefix(code, "mp3/")
 
@@ -53,11 +57,4 @@ func RegisterDownload(album *Album, codes []string) {
 		}
 
 	})
-}
-func serveMp3(album *Album, code string, codes []string) {
-	println("wav:" + code)
-}
-
-func serveWav(album *Album, code string, codes []string) {
-	println("wav:" + code)
 }

@@ -5,7 +5,7 @@ import "fmt"
 templ page(a *Album, err string) {
     {{
        // Match the dynamic background logic from your media player
-       bgStyle := fmt.Sprintf("background-image: url('/background/%s');", a.BackgroundFile)
+       bgStyle := fmt.Sprintf("background-image: url('%s/bg.jpg');",a.Slug)
        bodyAttrs := templ.Attributes{"style": bgStyle}
     }}
     <!DOCTYPE html>
@@ -140,7 +140,7 @@ templ page(a *Album, err string) {
 
 templ formatSelection(a *Album,code string) {
     {{
-       bgStyle := fmt.Sprintf("background-image: url('/background/%s');", a.BackgroundFile)
+       bgStyle := fmt.Sprintf("background-image: url('%s/bg.jpg');",a.Slug)
        bodyAttrs := templ.Attributes{"style": bgStyle}
     }}
     <!DOCTYPE html>
