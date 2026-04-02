@@ -1,0 +1,52 @@
+package mediaplayer
+
+templ Page(current track) {
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>{ current.name }</title>
+        <style>
+            body {
+                /* General layout styles */
+                margin: 0;
+                padding: 0;
+                font-family: sans-serif;
+                color: white;
+                height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                /* Background defaults */
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: cover;
+                background-attachment: fixed;
+            }
+            .card {
+                background: rgba(0, 0, 0, 0.7);
+                backdrop-filter: blur(10px); /* Adds a modern frosted glass effect */
+                padding: 40px;
+                border-radius: 20px;
+                width: 400px;
+                text-align: center;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            }
+            audio {
+                width: 100%;
+                margin-top: 20px;
+                filter: invert(1); /* Makes default audio player white */
+            }
+        </style>
+    </head>
+    <body style={ "background-image: url('/background/" + current.backgroundFile + "');" }>
+        <div class="card">
+            <h1>{ current.name }</h1>
+            <audio controls autoplay>
+                <source src={ "/audio/" + current.fileName } type="audio/wav" />
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </body>
+    </html>
+}
