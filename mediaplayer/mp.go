@@ -9,7 +9,7 @@ import (
 //go:embed audio/*
 var audioFS embed.FS
 
-//go:embed backgrounds/*
+//go:embed background/*
 var staticFS embed.FS
 
 func RegisterTracks() {

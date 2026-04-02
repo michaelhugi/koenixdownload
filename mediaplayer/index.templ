@@ -1,6 +1,16 @@
 package mediaplayer
 
+import(
+ "fmt"
+)
+
 templ Page(current track) {
+    {{
+            // Build the style string safely here
+            bgStyle := fmt.Sprintf("background-image: url('/background/%s');", current.backgroundFile)
+            // Put it in an attributes map
+            bodyAttrs := templ.Attributes{"style": bgStyle}
+        }}
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -39,7 +49,7 @@ templ Page(current track) {
             }
         </style>
     </head>
-    <body style={ "background-image: url('/background/" + current.backgroundFile + "');" }>
+   <body { bodyAttrs... }>
         <div class="card">
             <h1>{ current.name }</h1>
             <audio controls autoplay>

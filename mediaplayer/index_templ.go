@@ -8,6 +8,10 @@ package mediaplayer
 import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
+import (
+	"fmt"
+)
+
 func Page(current track) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
@@ -29,6 +33,10 @@ func Page(current track) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
+		// Build the style string safely here
+		bgStyle := fmt.Sprintf("background-image: url('/background/%s');", current.backgroundFile)
+		// Put it in an attributes map
+		bodyAttrs := templ.Attributes{"style": bgStyle}
 		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<!doctype html><html lang=\"en\"><head><meta charset=\"UTF-8\"><title>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
@@ -36,35 +44,30 @@ func Page(current track) templ.Component {
 		var templ_7745c5c3_Var2 string
 		templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(current.name)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `mediaplayer/index.templ`, Line: 8, Col: 29}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `mediaplayer/index.templ`, Line: 18, Col: 29}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</title><style>\n            body {\n                /* General layout styles */\n                margin: 0;\n                padding: 0;\n                font-family: sans-serif;\n                color: white;\n                height: 100vh;\n                display: flex;\n                align-items: center;\n                justify-content: center;\n                /* Background defaults */\n                background-repeat: no-repeat;\n                background-position: center center;\n                background-size: cover;\n                background-attachment: fixed;\n            }\n            .card {\n                background: rgba(0, 0, 0, 0.7);\n                backdrop-filter: blur(10px); /* Adds a modern frosted glass effect */\n                padding: 40px;\n                border-radius: 20px;\n                width: 400px;\n                text-align: center;\n                box-shadow: 0 10px 30px rgba(0,0,0,0.5);\n            }\n            audio {\n                width: 100%;\n                margin-top: 20px;\n                filter: invert(1); /* Makes default audio player white */\n            }\n        </style></head><body style=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</title><style>\n            body {\n                /* General layout styles */\n                margin: 0;\n                padding: 0;\n                font-family: sans-serif;\n                color: white;\n                height: 100vh;\n                display: flex;\n                align-items: center;\n                justify-content: center;\n                /* Background defaults */\n                background-repeat: no-repeat;\n                background-position: center center;\n                background-size: cover;\n                background-attachment: fixed;\n            }\n            .card {\n                background: rgba(0, 0, 0, 0.7);\n                backdrop-filter: blur(10px); /* Adds a modern frosted glass effect */\n                padding: 40px;\n                border-radius: 20px;\n                width: 400px;\n                text-align: center;\n                box-shadow: 0 10px 30px rgba(0,0,0,0.5);\n            }\n            audio {\n                width: 100%;\n                margin-top: 20px;\n                filter: invert(1); /* Makes default audio player white */\n            }\n        </style></head><body")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templ.RenderAttributes(ctx, templ_7745c5c3_Buffer, bodyAttrs)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "><div class=\"card\"><h1>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var3 string
-		templ_7745c5c3_Var3, templ_7745c5c3_Err = templruntime.SanitizeStyleAttributeValues("background-image: url('/background/" + current.backgroundFile + "');")
+		templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(current.name)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `mediaplayer/index.templ`, Line: 42, Col: 88}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `mediaplayer/index.templ`, Line: 54, Col: 30}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "\"><div class=\"card\"><h1>")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		var templ_7745c5c3_Var4 string
-		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(current.name)
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `mediaplayer/index.templ`, Line: 44, Col: 30}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -72,12 +75,12 @@ func Page(current track) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var5 string
-		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs("/audio/" + current.fileName)
+		var templ_7745c5c3_Var4 string
+		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs("/audio/" + current.fileName)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `mediaplayer/index.templ`, Line: 46, Col: 58}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `mediaplayer/index.templ`, Line: 56, Col: 58}
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
