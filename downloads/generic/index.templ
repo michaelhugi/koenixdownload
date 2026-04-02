@@ -252,8 +252,7 @@ templ formatSelection(a *Album,code string) {
     </head>
     <body { bodyAttrs... }>
         <div class="card">
-            <h1>Select Audio Format</h1>
-            <p>Choose your preferred quality for <strong>{ a.Name }</strong></p>
+            <h1>{a.Name}</h1>
 
             <div class="button-container">
                 <a href={ templ.SafeURL(a.Slug+"/mp3/" + code) } class="format-btn">
