@@ -1,0 +1,25 @@
+package layout
+
+import "fmt"
+
+templ Layout(title, bg string) {
+	{{
+		bgStyle := fmt.Sprintf("background-image: url('/style/%s');", bg)
+		bodyAttrs := templ.Attributes{"style": bgStyle}
+	}}
+	<!DOCTYPE html>
+	<html lang="en">
+		<head>
+			<meta charset="UTF-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+			<title>{ title }</title>
+			<link rel="stylesheet" type="text/css" href="/style/main.css"/>
+		</head>
+		<body { bodyAttrs... }>
+			<div class="card">
+				<h1>{ title }</h1>
+				{ children... }
+			</div>
+		</body>
+	</html>
+}
