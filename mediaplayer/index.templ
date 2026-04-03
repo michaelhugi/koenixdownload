@@ -7,8 +7,8 @@ import (
 templ page(t track) {
 	@layout.Layout(t.name, t.backgroundFile) {
 	    <audio controls autoplay controlsList="nodownload" oncontextmenu="false">
-        					<source src={ "/audio/" + t.fileName } type="audio/wav"/>
-        					Your browser does not support the audio element.
-        				</audio>
+            <source src={ "/audio/" + t.fileName } type="audio/wav"/>
+        	Your browser does not support the audio element.
+        </audio>
 	}
 }

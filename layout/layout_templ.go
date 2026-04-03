@@ -46,7 +46,7 @@ func Layout(title, bg string) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, " Judihui</title><link rel=\"stylesheet\" type=\"text/css\" href=\"/style/main.css\"></head><body")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</title><link rel=\"stylesheet\" type=\"text/css\" href=\"/style/main.css\"></head><body")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

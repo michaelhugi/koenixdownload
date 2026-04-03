@@ -23,7 +23,7 @@ body {
     max-width: 400px;
     min-height: 220px;
     text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -52,10 +52,12 @@ audio {
         font-size: 1.4rem;
         margin-bottom: 30px;
     }
+
     .card {
         padding: 40px 15px;
         width: 92vw;
     }
+
     audio {
         /* Increased height for easier finger-tapping */
         height: 65px;
@@ -69,3 +71,99 @@ audio::-webkit-media-controls-enclosure {
 audio::-webkit-media-controls-panel {
     width: 100%;
 }
+
+
+.access-code-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input[type="text"] {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 14px;
+    color: white;
+    font-size: 1rem;
+    text-align: center;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.05);
+}
+.btn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 12px;
+    padding: 14px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+.btn:hover{
+    transform: translateY(-3px);
+}
+.btn:active{
+    transform: translateY(0);
+}
+
+.btn-primary{
+    background: #ffffff;
+    color: #000000;
+}
+
+.btn-primary:hover {
+    background: #e2e2e2;
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+
+.error-box {
+    margin-top: 20px;
+    background: rgba(239, 68, 68, 0.2);
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    color: #fca5a5;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+}
+
+
+.downloads-button-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.downloads-format-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.downloads-format-desc {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.6;
+}
+

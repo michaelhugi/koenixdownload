@@ -8,7 +8,9 @@ package generic
 import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
-import "fmt"
+import (
+	"koenixdownload/layout"
+)
 
 func page(a *Album, err string) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
@@ -31,80 +33,57 @@ func page(a *Album, err string) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		// Match the dynamic background logic from your media player
-		bgStyle := fmt.Sprintf("background-image: url('/style/%s');", a.BackgroundFile)
-		bodyAttrs := templ.Attributes{"style": bgStyle}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<!doctype html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		var templ_7745c5c3_Var2 string
-		templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(a.Name)
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `downloads/generic/index.templ`, Line: 16, Col: 23}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</title><style>\n            body {\n                margin: 0;\n                padding: 0;\n                font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif;\n                color: white;\n                height: 100vh;\n                display: flex;\n                align-items: center;\n                justify-content: center;\n                background-repeat: no-repeat;\n                background-position: center center;\n                background-size: cover;\n                background-attachment: fixed;\n            }\n\n            .card {\n                background: rgba(0, 0, 0, 0.65);\n                backdrop-filter: blur(15px); /* Matches your player's frosted glass */\n                -webkit-backdrop-filter: blur(15px);\n                padding: 40px;\n                border-radius: 24px;\n                width: 380px;\n                text-align: center;\n                box-shadow: 0 20px 40px rgba(0,0,0,0.4);\n                border: 1px solid rgba(255, 255, 255, 0.1);\n            }\n\n            h1 {\n                margin: 0 0 10px 0;\n                font-size: 1.8rem;\n                font-weight: 600;\n            }\n\n            p {\n                color: rgba(255, 255, 255, 0.7);\n                margin-bottom: 30px;\n                font-size: 0.95rem;\n            }\n\n            .input-group {\n                display: flex;\n                flex-direction: column;\n                gap: 15px;\n            }\n\n            input[type=\"text\"] {\n                background: rgba(255, 255, 255, 0.1);\n                border: 1px solid rgba(255, 255, 255, 0.2);\n                border-radius: 12px;\n                padding: 14px;\n                color: white;\n                font-size: 1rem;\n                text-align: center;\n                outline: none;\n                transition: all 0.3s ease;\n            }\n\n            input[type=\"text\"]:focus {\n                background: rgba(255, 255, 255, 0.15);\n                border-color: rgba(255, 255, 255, 0.5);\n                box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.05);\n            }\n\n            button {\n                background: #ffffff;\n                color: #000000;\n                border: none;\n                border-radius: 12px;\n                padding: 14px;\n                font-size: 1rem;\n                font-weight: 600;\n                cursor: pointer;\n                transition: transform 0.2s, background 0.2s;\n            }\n\n            button:hover {\n                background: #e2e2e2;\n                transform: translateY(-1px);\n            }\n\n            button:active {\n                transform: translateY(0);\n            }\n\n            .error-box {\n                margin-top: 20px;\n                background: rgba(239, 68, 68, 0.2);\n                border: 1px solid rgba(239, 68, 68, 0.4);\n                color: #fca5a5;\n                padding: 10px;\n                border-radius: 8px;\n                font-size: 0.85rem;\n            }\n        </style></head><body")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templ.RenderAttributes(ctx, templ_7745c5c3_Buffer, bodyAttrs)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "><div class=\"card\"><h1>")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		var templ_7745c5c3_Var3 string
-		templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(a.Name)
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `downloads/generic/index.templ`, Line: 115, Col: 23}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</h1><p>Enter your access code to listen to <strong>")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		var templ_7745c5c3_Var4 string
-		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(a.Name)
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `downloads/generic/index.templ`, Line: 116, Col: 67}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</strong></p><form action=\"/andertal\" method=\"GET\" class=\"input-group\"><input type=\"text\" name=\"code\" placeholder=\"Access Code\" required autocomplete=\"off\" autofocus> <button type=\"submit\">Access Content</button></form>")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		if err != "" {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "<div class=\"error-box\">")
+		templ_7745c5c3_Var2 := templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+			templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
+			templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
+			if !templ_7745c5c3_IsBuffer {
+				defer func() {
+					templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
+					if templ_7745c5c3_Err == nil {
+						templ_7745c5c3_Err = templ_7745c5c3_BufErr
+					}
+				}()
+			}
+			ctx = templ.InitializeContext(ctx)
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<p>Enter your access code to listen to <strong>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			var templ_7745c5c3_Var5 string
-			templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(err)
+			var templ_7745c5c3_Var3 string
+			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(a.Name)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `downloads/generic/index.templ`, Line: 132, Col: 25}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `downloads/generic/index.templ`, Line: 10, Col: 60}
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "</div>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "</div></body></html>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</strong></p><form action=\"/andertal\" method=\"GET\" class=\"access-code-input-group\"><input type=\"text\" name=\"code\" placeholder=\"Access Code\" required autocomplete=\"off\" autofocus> <button class=\"btn btn-primary\" type=\"submit\">Access Content</button></form>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			if err != "" {
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "<div class=\"error-box\">")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				var templ_7745c5c3_Var4 string
+				templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(err)
+				if templ_7745c5c3_Err != nil {
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `downloads/generic/index.templ`, Line: 24, Col: 21}
+				}
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</div>")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+			}
+			return nil
+		})
+		templ_7745c5c3_Err = layout.Layout(a.Name, a.BackgroundFile).Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -128,74 +107,56 @@ func formatSelection(a *Album, code string) templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var6 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var6 == nil {
-			templ_7745c5c3_Var6 = templ.NopComponent
+		templ_7745c5c3_Var5 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var5 == nil {
+			templ_7745c5c3_Var5 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		bgStyle := fmt.Sprintf("background-image: url('/style/%s');", a.BackgroundFile)
-		bodyAttrs := templ.Attributes{"style": bgStyle}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "<!doctype html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		var templ_7745c5c3_Var7 string
-		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(a.Name)
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `downloads/generic/index.templ`, Line: 151, Col: 23}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 10, "</title><style>\n            body {\n                margin: 0;\n                padding: 0;\n                font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif;\n                color: white;\n                height: 100vh;\n                display: flex;\n                align-items: center;\n                justify-content: center;\n                background-repeat: no-repeat;\n                background-position: center center;\n                background-size: cover;\n                background-attachment: fixed;\n            }\n\n            .card {\n                background: rgba(0, 0, 0, 0.65);\n                backdrop-filter: blur(15px);\n                -webkit-backdrop-filter: blur(15px);\n                padding: 50px 40px;\n                border-radius: 24px;\n                width: 420px;\n                text-align: center;\n                box-shadow: 0 20px 40px rgba(0,0,0,0.4);\n                border: 1px solid rgba(255, 255, 255, 0.1);\n            }\n\n            h1 {\n                margin: 0 0 10px 0;\n                font-size: 1.8rem;\n                font-weight: 700;\n                letter-spacing: -0.02em;\n            }\n\n            p {\n                color: rgba(255, 255, 255, 0.7);\n                margin-bottom: 35px;\n                font-size: 1rem;\n            }\n\n            .button-container {\n                display: grid;\n                grid-template-columns: 1fr 1fr;\n                gap: 15px;\n            }\n\n            .format-btn {\n                display: flex;\n                flex-direction: column;\n                align-items: center;\n                justify-content: center;\n                padding: 20px;\n                background: rgba(255, 255, 255, 0.1);\n                border: 1px solid rgba(255, 255, 255, 0.2);\n                border-radius: 16px;\n                color: white;\n                text-decoration: none;\n                transition: all 0.2s ease;\n                cursor: pointer;\n            }\n\n            .format-btn:hover {\n                background: rgba(255, 255, 255, 0.2);\n                transform: translateY(-3px);\n                border-color: rgba(255, 255, 255, 0.4);\n            }\n\n            .format-btn:active {\n                transform: translateY(-1px);\n            }\n\n            .format-name {\n                font-size: 1.2rem;\n                font-weight: 700;\n                margin-bottom: 4px;\n            }\n\n            .format-desc {\n                font-size: 0.75rem;\n                text-transform: uppercase;\n                letter-spacing: 0.1em;\n                opacity: 0.6;\n            }\n\n            /* Highlight the primary choice (optional) */\n            .wav-btn {\n                background: white;\n                color: black;\n                border: none;\n            }\n\n            .wav-btn:hover {\n                background: #f0f0f0;\n            }\n\n            .wav-btn .format-desc {\n                color: #555;\n            }\n        </style></head><body")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templ.RenderAttributes(ctx, templ_7745c5c3_Buffer, bodyAttrs)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "><div class=\"card\"><h1>")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		var templ_7745c5c3_Var8 string
-		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(a.Name)
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `downloads/generic/index.templ`, Line: 255, Col: 23}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "</h1><div class=\"button-container\"><a href=\"")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		var templ_7745c5c3_Var9 templ.SafeURL
-		templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinURLErrs(templ.SafeURL(a.Slug + "/mp3/" + code))
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `downloads/generic/index.templ`, Line: 258, Col: 62}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 13, "\" class=\"format-btn\"><span class=\"format-name\">MP3</span> <span class=\"format-desc\">Standard</span></a> <a href=\"")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		var templ_7745c5c3_Var10 templ.SafeURL
-		templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinURLErrs(templ.SafeURL(a.Slug + "/wav/" + code))
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `downloads/generic/index.templ`, Line: 263, Col: 62}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 14, "\" class=\"format-btn wav-btn\"><span class=\"format-name\">WAV</span> <span class=\"format-desc\">High Res</span></a></div></div></body></html>")
+		templ_7745c5c3_Var6 := templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+			templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
+			templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
+			if !templ_7745c5c3_IsBuffer {
+				defer func() {
+					templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
+					if templ_7745c5c3_Err == nil {
+						templ_7745c5c3_Err = templ_7745c5c3_BufErr
+					}
+				}()
+			}
+			ctx = templ.InitializeContext(ctx)
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "<div class=\"downloads-button-container\"><a href=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var7 templ.SafeURL
+			templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinURLErrs(templ.SafeURL(a.Slug + "/mp3/" + code))
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `downloads/generic/index.templ`, Line: 34, Col: 58}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "\" class=\"btn btn-secondary\"><span class=\"downloads-format-name\">MP3</span> <span class=\"downloads-format-desc\">Standard</span></a> <a href=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var8 templ.SafeURL
+			templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinURLErrs(templ.SafeURL(a.Slug + "/wav/" + code))
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `downloads/generic/index.templ`, Line: 38, Col: 58}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "\" class=\"btn btn-primary\"><span class=\"downloads-format-name\">WAV</span> <span class=\"fdownloads-ormat-desc\">High Res</span></a></div>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			return nil
+		})
+		templ_7745c5c3_Err = layout.Layout(a.Name, a.BackgroundFile).Render(templ.WithChildren(ctx, templ_7745c5c3_Var6), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
