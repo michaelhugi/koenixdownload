@@ -12,16 +12,13 @@ var wavData []byte
 //go:embed mp3.zip
 var mp3Data []byte
 
-//go:embed background.jpg
-var background []byte
-
 var album = &generic.Album{
-	Name:       "Andertal",
-	Slug:       "/andertal",
-	WavData:    wavData,
-	Mp3Data:    mp3Data,
-	ModTime:    time.Now(),
-	Background: background,
+	Name:           "Andertal",
+	Slug:           "/andertal",
+	WavData:        wavData,
+	Mp3Data:        mp3Data,
+	ModTime:        time.Now(),
+	BackgroundFile: "album_and_bg.jpg",
 }
 
 func Register() {

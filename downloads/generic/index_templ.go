@@ -32,7 +32,7 @@ func page(a *Album, err string) templ.Component {
 		}
 		ctx = templ.ClearChildren(ctx)
 		// Match the dynamic background logic from your media player
-		bgStyle := fmt.Sprintf("background-image: url('%s/bg.jpg');", a.Slug)
+		bgStyle := fmt.Sprintf("background-image: url('/background/%s');", a.BackgroundFile)
 		bodyAttrs := templ.Attributes{"style": bgStyle}
 		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<!doctype html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>")
 		if templ_7745c5c3_Err != nil {
@@ -133,7 +133,7 @@ func formatSelection(a *Album, code string) templ.Component {
 			templ_7745c5c3_Var6 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		bgStyle := fmt.Sprintf("background-image: url('%s/bg.jpg');", a.Slug)
+		bgStyle := fmt.Sprintf("background-image: url('/background/%s');", a.BackgroundFile)
 		bodyAttrs := templ.Attributes{"style": bgStyle}
 		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "<!doctype html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>")
 		if templ_7745c5c3_Err != nil {

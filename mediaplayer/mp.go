@@ -9,13 +9,7 @@ import (
 //go:embed audio/*
 var audioFS embed.FS
 
-//go:embed background/*
-var staticFS embed.FS
-
 func RegisterTracks() {
-
-	// Serve embedded static files
-	http.Handle("/background/", http.FileServer(http.FS(staticFS)))
 
 	// Serve embedded audio files
 	http.Handle("/audio/", http.FileServer(http.FS(audioFS)))
