@@ -7,6 +7,10 @@ SERVER_IP="192.168.0.201"
 DEST_DIR="/mnt/containers/downloads"
 COMPOSE_DIR="/mnt/containers"
 
+echo " Generating templ"
+templ generate
+sleep 3s
+
 echo "🚀 Starte Deployment für $BINARY_NAME..."
 
 # 1. Kompilieren (Build locally to avoid /tmp disk quota issues)

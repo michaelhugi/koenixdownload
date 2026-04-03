@@ -10,11 +10,11 @@ import (
 // GO:EMBED directives - These lines pull the folders into the binary at compile time
 //
 
-//go:embed background/*
-var backgroundFS embed.FS
+//go:embed style/*
+var styleFs embed.FS
 
 func main() {
-	http.Handle("/background/", http.FileServer(http.FS(backgroundFS)))
+	http.Handle("/style/", http.FileServer(http.FS(styleFs)))
 
 	mediaplayer.RegisterTracks()
 	downloads.RegisterDownloads()

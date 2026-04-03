@@ -3,65 +3,26 @@ package mediaplayer
 import "fmt"
 
 templ page(current track) {
-	{{
-		// Build the style string safely here
-		bgStyle := fmt.Sprintf("background-image: url('/background/%s');", current.backgroundFile)
-		// Put it in an attributes map
-		bodyAttrs := templ.Attributes{"style": bgStyle}
-	}}
-	<!DOCTYPE html>
-	<html lang="en">
-		<head>
-			<meta charset="UTF-8"/>
-			<title>{ current.name }</title>
-			<style>
-            body {
-                /* General layout styles */
-                margin: 0;
-                padding: 0;
-                font-family: sans-serif;
-                color: white;
-                height: 100vh;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                /* Background defaults */
-                background-repeat: no-repeat;
-                background-position: center center;
-                background-size: cover;
-                background-attachment: fixed;
-            }
-            .card {
-                background: rgba(0, 0, 0, 0.7);
-                backdrop-filter: blur(10px); /* Adds a modern frosted glass effect */
-                padding: 40px;
-                border-radius: 20px;
-                width: 400px;
-                text-align: center;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            }
-            audio {
-                width: 100%;
-                margin-top: 20px;
-                filter: invert(1); /* Makes default audio player white */
-            }
-            audio::-webkit-media-controls-enclosure {
-                overflow:hidden;
-            }
-
-            audio::-webkit-media-controls-panel {
-                width: calc(100% + 30px); /* Adjust as needed */
-            }
-        </style>
-		</head>
-		<body { bodyAttrs... }>
-			<div class="card">
-				<h1>{ current.name }</h1>
-				<audio controls autoplay controlsList="nodownload" oncontextmenu="return false;">
-					<source src={ "/audio/" + current.fileName } type="audio/wav"/>
-					Your browser does not support the audio element.
-				</audio>
-			</div>
-		</body>
-	</html>
+    {{
+       bgStyle := fmt.Sprintf("background-image: url('/style/%s');", current.backgroundFile)
+       bodyAttrs := templ.Attributes{"style": bgStyle}
+    }}
+    <!DOCTYPE html>
+    <html lang="en">
+       <head>
+          <meta charset="UTF-8"/>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+          <title>{ current.name }</title>
+          <link rel="stylesheet" type="text/css" href="/style/main.css"></link>
+       </head>
+       <body { bodyAttrs... }>
+          <div class="card">
+             <h1>{ current.name }</h1>
+             <audio controls autoplay controlsList="nodownload" oncontextmenu="false">
+                <source src={ "/audio/" + current.fileName } type="audio/wav"/>
+                Your browser does not support the audio element.
+             </audio>
+          </div>
+       </body>
+    </html>
 }
