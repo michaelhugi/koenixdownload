@@ -18,7 +18,7 @@ var album = &generic.Album{
 	WavData:        wavData,
 	Mp3Data:        mp3Data,
 	ModTime:        time.Now(),
-	BackgroundFile: "album_and_bg.jpg",
+	BackgroundFile: "AND_00_Album-komplett.jpg",
 }
 
 func Register() {
